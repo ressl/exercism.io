@@ -1,12 +1,7 @@
 # Class Pangram
 class Pangram
-  def initialize(phrase)
-    @phrase = phrase
-  end
-
   def self.pangram?(phrase)
-    letters = phrase.downcase.split('').uniq.sort.select { |c| ('a'..'z').cover?(c) }
-    true if letters.count >= 26
+    ('a'..'z').all? { |c| phrase.downcase.each_char.include?(c) }
   end
 end
 
