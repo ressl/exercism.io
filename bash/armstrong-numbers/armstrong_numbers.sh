@@ -2,9 +2,9 @@
 
 # debug
 # set -x
-declare -ri INPUT=$2
 
-armstrong() {
+is_armstrong() {
+  declare -ri INPUT=$1
   declare -i NUM
   declare -i SUM
 
@@ -21,4 +21,4 @@ armstrong() {
   fi
 }
 
-armstrong
+"${@}"
