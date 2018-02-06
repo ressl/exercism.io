@@ -1,0 +1,4 @@
+s="08328444"
+declare -a a
+for ((i=0; i<${#s}; i++)); do a[$i]="${s:$i:1}"; done
+declare -p a
