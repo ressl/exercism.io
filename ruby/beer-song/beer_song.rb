@@ -1,21 +1,31 @@
 # Class BeerSong
 class BeerSong
-  def verse(number)
-    number_minus = number - 1
-    zero = "No more bottles of beer on the wall, no more bottles of beer.\nGo to the store and buy some more, 99 bottles of beer on the wall.\n"
-    one = "#{number} #{number.eql?(1) ? 'bottle' : 'bottles'} of beer on the wall, #{number} #{number.eql?(1) ? 'bottle' : 'bottles'} of beer.\n"
-    two = "Take #{number_minus.zero? ? 'it' : 'one'} down and pass it around, #{!number_minus.zero? ? number_minus : 'no more'} #{number_minus.eql?(1) || number.zero? ? 'bottle' : 'bottles'} of beer on the wall.\n"
-
-    number.zero? ? zero : (one + two)
+  def verses(max, min)
+    max.downto(min).map { |num| verse(num) }.join("\n")
   end
 
-  def verses(max, min)
-    all = []
-    max.downto(min).each { |number| all << verse(number) }
-    all.join("\n")
+  def verse(num)
+    num_minus = num - 1
+    one = "#{num} #{bottle(num)} of beer on the wall, " \
+          "#{num} #{bottle(num)} of beer.\n"
+    two = "Take #{num_minus.zero? ? 'it' : 'one'} down and pass it around, " \
+          "#{!num_minus.zero? ? num_minus : 'no more'} " \
+          "#{num_minus.eql?(1) || num.zero? ? 'bottle' : 'bottles'} " \
+          "of beer on the wall.\n"
+
+    num.zero? ? zero : (one + two)
+  end
+
+  def bottle(num)
+    num.eql?(1) ? 'bottle' : 'bottles'
+  end
+
+  def zero
+    "No more bottles of beer on the wall, no more bottles of beer.\n" \
+    "Go to the store and buy some more, 99 bottles of beer on the wall.\n"
   end
 end
 
 module BookKeeping
-  VERSION = 3 # Where the version number matches the one in the test.
+  VERSION = 3 # Where the version num matches the one in the test.
 end
