@@ -11,7 +11,7 @@ func Abbreviate(s string) string {
 	acronym := ""
 
 	for _, word := range words {
-		acronym = acronym + string([]rune(word)[0])
+		acronym += string([]rune(word)[0])
 	}
 
 	return (strings.ToUpper(acronym))
